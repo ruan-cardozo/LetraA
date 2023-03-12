@@ -1,5 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        LetraA letraA = new LetraA();
+        char[][] arr = letraA.criarLetraA();
+        Escrever.escreverLetra(arr);
+
     }
 }
