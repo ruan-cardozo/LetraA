@@ -1,27 +1,39 @@
-# LetraA
-3. Deixe o metodo main mais limpo para leitura
-Vence 3 de março de 2023 às 23:59
-Instruções
-  public static void main(String[] args) {
-    char[][] arr = letraA();
-    escrever(arr);
-  }
-  public static char[][] letraA() {
-    char[][] arr = {
-      {'A', 'A', 'A', 'A', 'A'},
-      {'A', ' ', ' ', ' ', 'A'},
-      {'A', 'A', 'A', 'A', 'A'},
-      {'A', ' ', ' ', ' ', 'A'},
-      {'A', ' ', ' ', ' ', 'A'}
-    };
-    return arr;
-  }
-  public static void escrever(char[][] arr) {
-    for (int i = 0; i < arr.length; i++) {
-      for (int j = 0; j < arr[i].length; j++) {
-        System.out.print(arr[i][j] + " ");
-      }
-      System.out.println();
+Refatore o código (preferencialmente em um projeto diferente do original).
+
+public interface Letra {
+    char[][] desenhar();
+}
+
+public class LetraA implements Letra {
+    public char[][] desenhar() {
+        char[][] arr = {
+          {'A', 'A', 'A', 'A', 'A'},
+          {'A', ' ', ' ', ' ', 'A'},
+          {'A', 'A', 'A', 'A', 'A'},
+          {'A', ' ', ' ', ' ', 'A'},
+          {'A', ' ', ' ', ' ', 'A'}
+        };
+        return arr;
     }
-  }
-Meu trabalho
+}
+
+public class Escritor {
+    public void escrever(char[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+public class Exemplo {
+    public static void main(String[] args) {
+        Letra letra = new LetraA();
+        char[][] arr = letra.desenhar();
+
+        Escritor escritor = new Escritor();
+        escritor.escrever(arr);
+    }
+}
